@@ -27,7 +27,7 @@ WHERE	 	P.ProductSubcategoryID
 IN (
 SELECT 		PSC.ProductSubCategoryID
 FROM 		productsubcategory AS PSC
-WHERE 		PSC.Name  LIKE '%Bo%'
+WHERE 		PSC.Name  LIKE '%Bo'
 );
 
 /*
@@ -68,14 +68,16 @@ Chú ý: sủ dụng sort order và column headings
 */
 
 USE 			adventureworks;
-SELECT 			Cou.Name 						AS Country ,
+SELECT 			Cou_Region.Name 				AS 	Country ,
 				Provi.Name 						AS	Province
-FROM 			countryregion					AS Cou
-INNER JOIN 		stateprovince 					AS Provi
+FROM 			countryregion					AS 	Cou_Region
+INNER JOIN 		stateprovince 					AS 	Provi
 		
-ON 				Cou.CountryRegionCode	=		Provi.CountryRegionCode
-GROUP BY					Provi.Name,			Cou.CountryRegionCode
-HAVING 			Cou.Name ="Germany" 			OR Cou.Name ="Canada";
+ON 				Cou_Region.CountryRegionCode	=		Provi.CountryRegionCode
+GROUP BY		Provi.Name,	Cou_Region.CountryRegionCode
+HAVING 			Cou_Region.Name ="Germany" 		OR Cou_Region.Name ="Canada"
+ORDER BY		Cou_Region.Name ASC
+;
 
 /*
 Question 3:
