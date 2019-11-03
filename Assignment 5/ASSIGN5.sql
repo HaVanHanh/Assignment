@@ -55,10 +55,10 @@ AdventureWorks2008sample database.
 */
 USE 			adventureworks;
 SELECT 			Cou.Name 				AS 	Country ,
-			Provi.Name 				AS	Province
-FROM 			countryregion				AS 	Cou
-INNER JOIN 		stateprovince 				AS 	Provi
-ON 			Cou.CountryRegionCode	=		Provi.CountryRegionCode;
+				Provi.Name 				AS	Province
+FROM 			countryregion			AS 	Cou
+INNER JOIN 		stateprovince 			AS 	Provi
+ON 				Cou.CountryRegionCode	=		Provi.CountryRegionCode;
 	
 
 /*
@@ -68,7 +68,7 @@ Chú ý: sủ dụng sort order và column headings
 */
 
 USE 			adventureworks;
-<<<<<<< HEAD
+
 SELECT 			Cou_Region.Name 				AS 	Country ,
 				Provi.Name 						AS	Province
 FROM 			countryregion					AS 	Cou_Region
@@ -79,29 +79,18 @@ GROUP BY		Provi.Name,	Cou_Region.CountryRegionCode
 HAVING 			Cou_Region.Name ="Germany" 		OR Cou_Region.Name ="Canada"
 ORDER BY		Cou_Region.Name ASC
 ;
-=======
-SELECT 			Cou.Name 						AS Country ,
-			Provi.Name 						AS	Province
-FROM 			countryregion						AS Cou
-INNER JOIN 		stateprovince 						AS Provi
-		
-ON 			Cou.CountryRegionCode	=	Provi.CountryRegionCode
-GROUP BY		Provi.Name,			Cou.CountryRegionCode
-HAVING 			Cou.Name ="Germany" 		OR Cou.Name ="Canada";
->>>>>>> 595eaef53945e175e9a2157ba0c4bfe860ee692c
-
 /*
 Question 3:
 SalesOrderID, OrderDate and SalesPersonID. Từ bảng SalesPerson, chúng ta lấy cột
 BusinessEntityID (là định danh của người sales), Bonus and the SalesYTD (là đã sale
 được bao nhiêu người trong năm nay)
-
 */
 SELECT 		SOH.SalesOrderID,	SOH.OrderDate,		S.SalesPersonID , S.Bonus,s.SalesYTD
 FROM 		SalesPerson 		AS S		
-INNER JOIN 	SalesOrderHeader	AS SOH
-ON 		S.SalesPersonID		=SOH.SalesPersonID
-ORDER BY	SOH.SalesOrderID	ASC
+INNER JOIN 	SalesOrderHeader	AS SOH ON 	S.SalesPersonID		=SOH.SalesPersonID
+ORDER BY	SOH.SalesOrderID	ASC;
+
+
 
 /*
 Question 4:
@@ -109,4 +98,7 @@ Sử dụng câu query, thêm cột JobTitle and xóa cột SalesPersonID và
 BusinessEntityID.
 EM CHẢ THẤY BẢNG BusinessEntityID ĐÂU CẢ 
 */
-
+SELECT 		SOH.SalesOrderID,	SOH.OrderDate,	 S.Bonus,s.SalesYTD
+FROM 		SalesPerson 		AS S		
+INNER JOIN 	SalesOrderHeader	AS SOH ON 	S.SalesPersonID	=SOH.SalesPersonID
+ORDER BY	SOH.SalesOrderID	ASC;
