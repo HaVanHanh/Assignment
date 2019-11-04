@@ -61,16 +61,15 @@ CREATE TABLE Work_Done (
 -- --------------------------
 USE Assignment6;
 INSERT INTO Employee 
-(EmployeeLastName,			EmployeeFirstName,		EmployeeHireDate,	EmployeeStatus,		SupervisorID,			SocialSecurityNumber)
-VALUE
-('NAM',						'PHAM HOANG',				'2009-09-19',			'1'	,					1,				1710310009),
-('THANH',					'NGUYEN TUAN',				'2018-07-29',			'1'	,					2,				1710310010),
-('QUYNH',					'NGUYEN THI',				'2017-08-29',			'1'	,					2,				1710310011),
-('HOA',						'NGUYEN TUAN',				'2008-07-29',			'1'	,					2,				1710310012),
-('THANH',					'NGUYEN VAN',				'2005-09-13',			'0'	,					1,				1710310013),
-('HUNG',					'VU TUAN	',				'2014-07-29',			'1'	,					1,				1710310014),
-('LAN',						'NGUYEN THI',				'2013-07-29',			'1'	,					1,				1710310015),
-('QUANG',					'VU TUAN	',				'2014-07-29',			'1'	,					1,				1710310016);
+(EmployeeLastName,	EmployeeFirstName,	EmployeeHireDate,	EmployeeStatus,		SupervisorID,	SocialSecurityNumber)	
+('NAM',			'PHAM HOANG',		'2009-09-19',			'1'	,	1,		1710310009),
+('THANH',		'NGUYEN TUAN',		'2018-07-29',			'1'	,	2,		1710310010),
+('QUYNH',		'NGUYEN THI',		'2017-08-29',			'1'	,	2,		1710310011),
+('HOA',			'NGUYEN TUAN',		'2008-07-29',			'1'	,	2,		1710310012),
+('THANH',		'NGUYEN VAN',		'2005-09-13',			'0'	,	1,		1710310013),
+('HUNG',		'VU TUAN',		'2014-07-29',			'1'	,	1,		1710310014),
+('LAN',			'NGUYEN THI',		'2013-07-29',			'1'	,	1,		1710310015),
+('QUANG',		'VU TUAN',		'2014-07-29',			'1'	,	1,		1710310016);
 
 SELECT * FROM Employee;
 -- --------------------------
@@ -78,13 +77,13 @@ USE Assignment6;
 INSERT INTO Projects
 (EmployeeID,	ProjectName,			ProjectStartDate,		ProjectDescription,			ProjectDetailt,			ProjectCompletedOn)
 VALUE		
-(1,		'Office Update',		'2019-05-05',			'Office Update 2019-05',		'Cap nhat',				'2020-01-05'),
+(1,		'Office Update',		'2019-05-05',			'Office Update 2019-05',		'Cap nhat',			'2020-01-05'),
 (3,		'Windows Update',		'2019-04-05',			'Win Update version 1903',		'Update win base', 		'2019-09-05'),
 (7,		'SkyDrive',			'2018-03-05',			'Update Sky',				'PHAN MEM MCS',			'2018-12-05');
 
 USE Assignment6;
 INSERT INTO Project_Modules
-(ModuleID,		ProjectID,		EmployeeID,		ProjectModulesDate,		ProjectModulesCompledOn,	ProjectModulesDescription)
+(ModuleID,		ProjectID,		EmployeeID,				ProjectModulesDate,		ProjectModulesCompledOn,		ProjectModulesDescription)
 VALUE
 (1.1,			1,				1,				'2019-05-05',			'2019-08-05',				'Giai doan phan tich thiet ke'),
 (1.2,			1,				6,				'2019-08-05',			'2019-11-05',				'Giai doan code'),
