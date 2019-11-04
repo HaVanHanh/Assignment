@@ -75,27 +75,24 @@ SELECT * FROM Employee;
 -- --------------------------
 USE Assignment6;
 INSERT INTO Projects
-(EmployeeID,	ProjectName,			ProjectStartDate,		ProjectDescription,			ProjectDetailt,			ProjectCompletedOn)
-VALUE		
-(1,		'Office Update',		'2019-05-05',			'Office Update 2019-05',		'Cap nhat',			'2020-01-05'),
-(3,		'Windows Update',		'2019-04-05',			'Win Update version 1903',		'Update win base', 		'2019-09-05'),
-(7,		'SkyDrive',			'2018-03-05',			'Update Sky',				'PHAN MEM MCS',			'2018-12-05');
+(EmployeeID,	ProjectName,		ProjectStartDate,	ProjectDescription,		ProjectDetailt,		ProjectCompletedOn)
+VAL
+(1,		'Office Update',	'2019-05-05',		'Office Update 2019-05',	'Cap nhat',		'2020-01-05'),
+(3,		'Windows Update',	'2019-04-05',		'Win Update version 1903',	'Update win base', 	'2019-09-05'),
+(7,		'SkyDrive',		'2018-03-05',		'Update Sky',			'PHAN MEM MCS',		'2018-12-05');
 
 USE Assignment6;
 INSERT INTO Project_Modules
-(ModuleID,		ProjectID,		EmployeeID,				ProjectModulesDate,		ProjectModulesCompledOn,		ProjectModulesDescription)
-VALUE
-(1.1,			1,				1,				'2019-05-05',			'2019-08-05',				'Giai doan phan tich thiet ke'),
-(1.2,			1,				6,				'2019-08-05',			'2019-11-05',				'Giai doan code'),
-(1.3,			1,				7,				'2019-11-05',			'2020-01-05',				'Hoan thanh san pham'),
-
-(2.1,			2,				2,				'2019-04-05',			'2019-06-05',				'Giai doan phan tich thiet ke'),
-(2.2,			2,				3,				'2019-06-05',			'2019-08-05',				'Giai doan code'),
-(2.3,			2,				4,				'2019-08-05',			'2019-09-05',				'Hoan thanh san pham'),
-
-(3.1,			3,				2,				'2018-03-05',			'2018-06-05',				'Giai doan phan tich thiet ke'),
-(3.2,			3,				3,				'2018-06-05',			'2018-10-05',				'Giai doan code'),
-(3.3,			3,				4,				'2018-10-05',			'2018-12-05',				'Hoan thanh san pham');
+(ModuleID,	ProjectID,	EmployeeID,	ProjectModulesDate,	ProjectModulesCompledOn,	ProjectModulesDescription)
+(1.1,		1,		1,		'2019-05-05',		'2019-08-05',			'Giai doan phan tich thiet ke'),
+(1.2,		1,		6,		'2019-08-05',		'2019-11-05',			'Giai doan code'),
+(1.3,		1,		7,		'2019-11-05',		'2020-01-05',			'Hoan thanh san pham'
+(2.1,		2,		2,		'2019-04-05',		'2019-06-05',			'Giai doan phan tich thiet ke'),
+(2.2,		2,		3,		'2019-06-05',		'2019-08-05',			'Giai doan code'),
+(2.3,		2,		4,		'2019-08-05',		'2019-09-05',			'Hoan thanh san pham'
+(3.1,		3,		2,		'2018-03-05',		'2018-06-05',			'Giai doan phan tich thiet ke'),
+(3.2,		3,		3,		'2018-06-05',		'2018-10-05',			'Giai doan code'),
+(3.3,		3,		4,		'2018-10-05',		'2018-12-05',			'Hoan thanh san pham');
 
 
 USE Assignment6;
