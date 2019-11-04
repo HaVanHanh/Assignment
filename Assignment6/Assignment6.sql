@@ -7,52 +7,61 @@ DROP DATABASE IF  EXISTS 		Assignment6;
 CREATE DATABASE 				Assignment6;
 USE 							Assignment6;
 
-CREATE TABLE Employee(
-	EmployeeID					SMALLINT AUTO_INCREMENT PRIMARY KEY,
-    EmployeeLastName			VARCHAR(20) NOT NULL,
-    EmployeeFirstName			VARCHAR(20) NOT NULL,
-    EmployeeHireDate			DATE,
-    EmployeeStatus				ENUM('1','0'), -- 1 Đang làm , 2 đã nghỉ 
-    SupervisorID				SMALLINT NOT NULL,
-    SocialSecurityNumber		INT,
-    FOREIGN KEY (SupervisorID) 	REFERENCES Employee(EmployeeID) 
+CREATE TABLE Employee (
+    EmployeeID SMALLINT AUTO_INCREMENT PRIMARY KEY,
+    EmployeeLastName VARCHAR(20) NOT NULL,
+    EmployeeFirstName VARCHAR(20) NOT NULL,
+    EmployeeHireDate DATE,
+    EmployeeStatus ENUM('1', '0'),
+    SupervisorID SMALLINT NOT NULL,
+    SocialSecurityNumber INT,
+    FOREIGN KEY (SupervisorID)
+        REFERENCES Employee (EmployeeID)
 );
 
-CREATE TABLE Projects(
-
-	
-	ProjectID					SMALLINT AUTO_INCREMENT PRIMARY KEY,
-	EmployeeID					SMALLINT NOT NULL,
-	ProjectName					VARCHAR(50) NOT NULL,
-	ProjectStartDate			DATE,
-	ProjectDescription			VARCHAR(1000),
-	ProjectDetailt				VARCHAR(1000),
-	ProjectCompletedOn			DATE,
-    FOREIGN KEY (EmployeeID) 	REFERENCES Employee(EmployeeID)  ON DELETE CASCADE
+CREATE TABLE Projects (
+    ProjectID SMALLINT AUTO_INCREMENT PRIMARY KEY,
+    EmployeeID SMALLINT NOT NULL,
+    ProjectName VARCHAR(50) NOT NULL,
+    ProjectStartDate DATE,
+    ProjectDescription VARCHAR(1000),
+    ProjectDetailt VARCHAR(1000),
+    ProjectCompletedOn DATE,
+    FOREIGN KEY (EmployeeID)
+        REFERENCES Employee (EmployeeID)
+        ON DELETE CASCADE
 );
 /*	ProjectModulesDate: ngày nhân viên hoàn thành module (theo kế hoạch).
 	ProjectCompletedOne: ngày thời gian hoàn thành project
     ProjectModulesCompletedOn: ngày thực tế nhân viên hoàn thành module.
 */
-CREATE TABLE Project_Modules(
-	ModuleID					FLOAT PRIMARY KEY  ,
-    ProjectID					SMALLINT NOT NULL  ,
-    EmployeeID					SMALLINT NOT NULL ,
-    ProjectModulesDate			DATE,			  			
-    ProjectModulesCompledOn		DATE,
-    ProjectModulesDescription	VARCHAR(1000),
-    FOREIGN KEY (EmployeeID) 	REFERENCES Employee(EmployeeID) ON DELETE CASCADE ,
-    FOREIGN KEY (ProjectID) 	REFERENCES Projects(ProjectID)   ON DELETE CASCADE
+CREATE TABLE Project_Modules (
+    ModuleID FLOAT PRIMARY KEY,
+    ProjectID SMALLINT NOT NULL,
+    EmployeeID SMALLINT NOT NULL,
+    ProjectModulesDate DATE,
+    ProjectModulesCompledOn DATE,
+    ProjectModulesDescription VARCHAR(1000),
+    FOREIGN KEY (EmployeeID)
+        REFERENCES Employee (EmployeeID)
+        ON DELETE CASCADE,
+    FOREIGN KEY (ProjectID)
+        REFERENCES Projects (ProjectID)
+        ON DELETE CASCADE
 );
-CREATE TABLE Work_Done(
-	WorkDoneID					TINYINT  AUTO_INCREMENT PRIMARY KEY,
-    EmployeeID					SMALLINT NOT NULL ,
-    ModuleID					FLOAT NOT NULL ,
-    WorkDoneDate				DATE,		-- = NULL NẾU CHƯA HOÀN THÀNH
-    WorkDoneDescription			VARCHAR(1000),
-    WorkDoneStatus				VARCHAR(20),
-    FOREIGN KEY (EmployeeID) 	REFERENCES Employee(EmployeeID) ON DELETE CASCADE,
-    FOREIGN KEY (ModuleID) 		REFERENCES Project_Modules(ModuleID)  ON DELETE CASCADE
+CREATE TABLE Work_Done (
+    WorkDoneID TINYINT AUTO_INCREMENT PRIMARY KEY,
+    EmployeeID SMALLINT NOT NULL,
+    ModuleID FLOAT NOT NULL,
+    WorkDoneDate DATE,
+    WorkDoneDescription VARCHAR(1000),
+    WorkDoneStatus VARCHAR(20),
+    FOREIGN KEY (EmployeeID)
+        REFERENCES Employee (EmployeeID)
+        ON DELETE CASCADE,
+    FOREIGN KEY (ModuleID)
+        REFERENCES Project_Modules (ModuleID)
+        ON DELETE CASCADE
 );
 -- --------------------------
 USE Assignment6;
@@ -68,6 +77,7 @@ VALUE
 ('LAN',						'NGUYEN THI',				'2013-07-29',			'1'	,					1,				1710310015),
 ('QUANG',					'VU TUAN	',				'2014-07-29',			'1'	,					1,				1710310016);
 
+SELECT * FROM Employee;
 -- --------------------------
 USE Assignment6;
 INSERT INTO Projects
@@ -136,7 +146,7 @@ END$$
 DELIMITER ;
 CALL Assignment6.Delete_Project();
 
-
+ 
 
 /***************************************
  Viết stored procedure (có parameter) để 
@@ -163,15 +173,15 @@ USE Assignment6;
 DROP FUNCTION IF EXISTS  EmSupport;
 DELIMITER $$
 CREATE FUNCTION EmSupport() RETURNS SMALLINT
+
 BEGIN
 	DECLARE V_EmSP 	SMALLINT;
-    
-	SELECT 	PM.EmployeeID INTO 	V_EmSP
+	SELECT 	WD.EmployeeID  INTO V_EmSP
     FROM 	Project_Modules PM 
     RIGHT 	JOIN Work_Done WD ON PM.EmployeeID = WD.EmployeeID
-    WHERE	PM.EmployeeID IS NULL;
+    WHERE	PM.EmployeeID IS NULL ;
     
     RETURN V_EmSP;
 END $$
 DELIMITER ;
-SELECT EmSupport() ;
+SELECT EmSupport();
